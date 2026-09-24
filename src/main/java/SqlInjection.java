@@ -16,9 +16,10 @@ public class SqlInjection {
     public static ResultSet doQuery2(HttpServletRequest request, Connection connection) throws SQLException {
         String customerName = request.getParameter("customerName");
         String query = "SELECT account_balance FROM user_data WHERE user_name = ?";
-        PreparedStatement statement = connection.prepareStatement(query);
-        statement.setString(1, customerName);
-        ResultSet results = statement.executeQuery();
-        return(results);
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, customerName);
+            ResultSet results = statement.executeQuery();
+            return(results);
+        }
     }
 }
