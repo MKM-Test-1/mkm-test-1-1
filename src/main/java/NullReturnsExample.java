@@ -12,7 +12,7 @@ public class NullReturnsExample {
     public static void testA() {
         // This demonstrates a very straightforward null-return bug
         Object result = returnA();
-        if (result != null) {
+        if (result == null) {
             result.toString();
         }
     }
