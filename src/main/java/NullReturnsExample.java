@@ -10,8 +10,11 @@ public class NullReturnsExample {
         return new Object();
     }
     public static void testA() {
-        // This demonstrates a very straightforward null-return bug
-        returnA().toString();
+        // Bug fix here
+        Object result = returnA();
+        if (result != null) {
+            String value = result.toString();
+        }
     }
     public static void testB() {
         // no bug here
