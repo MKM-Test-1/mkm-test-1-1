@@ -11,3 +11,4 @@ public class SqlInjection {
         ResultSet results = statement.executeQuery(query);
         return(results);
     }
+}
